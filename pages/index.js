@@ -11,11 +11,11 @@ export default function Home() {
   return (
 
     <div>
-      <div>
-        <Navbar/>
-      <br/>
-      <p/>
-      </div>
+      
+        
+      
+      <Navbar/>
+      
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
@@ -23,7 +23,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-
+      
       <main className={styles.main}>
         <div>
         <div className="text-center mb-0">
