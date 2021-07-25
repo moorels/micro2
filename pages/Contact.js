@@ -1,11 +1,21 @@
 import { Navbar } from '../components/Navbar'
 import React,{Fragment,useState} from 'react'
+import {PrismaClient} from '@prisma/client';
 
+const prisma = new PrismaClient();
+
+export async function getServerSideProps() {
+    const users = await prisma.user.findMany();
+    return {
+      props: { data: users },
+    };
+  }
 
 
 
 
 function Contact({data}) {
+  const [movies,setMovies] = useState(data)
 
 
     
@@ -13,6 +23,23 @@ function Contact({data}) {
 
         <div>
             <Navbar/>
+            {movies.map(item  => {
+     return (
+       
+      <Fragment key={Math.floor(Math.random()*10000)}>
+     <li ><br/>
+       <span ><strong>{item.firstname}</strong></span><br/>
+       <span>{item.lastname}</span><br/>
+       <span>{item.phone}</span><br/>
+       <span>{item.suburb}</span><br/>
+       <span>{item.enquirer}</span><br/>
+        <span>{item.details}</span><br/>
+      
+       </li>
+      </Fragment>
+     
+     )
+     })}
            <div>
            <section className="text-gray-600 body-font relative">
   <div className="container px-5 py-24 mx-auto">
