@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import React,{ useState } from 'react';
+import styles from '../styles/navbar.module.css'
+
 
 export const Navbar = () => {
   const [active, setActive] = useState(false);
@@ -9,8 +11,8 @@ export const Navbar = () => {
   };
 
   return (
-    <>
-      <nav className='flex items-center flex-wrap p-3 bg-gradient-to-l from-red-700 via-yellow-600 to-red-700 rounded-lg border-gray-300 border-4 shadow-md'>
+    <header className="sticky top-0 z-50">
+      <nav className='flex items-center flex-wrap p-3 bg-gradient-to-l from-red-700 via-yellow-600 to-red-700 rounded-lg border-gray-300 border-4 shadow-md space-y-2'>
         <Link href='/'>
           <a className='inline-flex items-center p-2 mr-4 '>
             <svg
@@ -75,6 +77,6 @@ export const Navbar = () => {
           </div>
         </div>
       </nav>
-    </>
+    </header>
   );
 };
