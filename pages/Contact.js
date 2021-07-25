@@ -6,26 +6,26 @@ const prisma = new PrismaClient();
 
 export async function getServerSideProps() {
     const users = await prisma.user.findMany();
+
     return {
       props: { data: users },
     };
   }
 
 
-
-
 function Contact({data}) {
   const [movies,setMovies] = useState(data)
 
-
-    
     return (
-
         <div>
+
             <Navbar/>
+      {/* map for a user name to login test code seems ok */}
+
             {movies.map(item  => {
+              if (item.firstname === 'gggg') {
      return (
-       
+      
       <Fragment key={Math.floor(Math.random()*10000)}>
      <li ><br/>
        <span ><strong>{item.firstname}</strong></span><br/>
@@ -39,7 +39,13 @@ function Contact({data}) {
       </Fragment>
      
      )
-     })}
+     }
+     
+    }
+     
+     )}
+          {/* map for a user name to login test code seems ok */}
+
            <div>
            <section className="text-gray-600 body-font relative">
   <div className="container px-5 py-24 mx-auto">

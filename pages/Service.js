@@ -107,3 +107,5 @@ export async function getServerSideProps() {
     props: {
       data:movies
     }}}
+
+    
