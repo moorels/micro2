@@ -6,21 +6,13 @@ import {PrismaClient} from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export async function getServerSideProps() {
-  const movies = await prisma.user.findMany();
-  return {
-    props: {
-      data:movies
-    }}}
 function Service({data}) {
-
   const [formData,setFormData] = useState ({})
   const [movies,setMovies] = useState(data)
-
 async function saveMovie(e) {
   e.preventDefault();
   setMovies([...movies,formData])
-  
+
 const response = await fetch('/api/movies',{
   method: 'POST',
   body: JSON.stringify(formData)
@@ -107,3 +99,11 @@ const response = await fetch('/api/movies',{
 }
 
 export default Service
+
+
+export async function getServerSideProps() {
+  const movies = await prisma.user.findMany();
+  return {
+    props: {
+      data:movies
+    }}}
