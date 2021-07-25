@@ -6,7 +6,7 @@ import {PrismaClient} from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-function Service({data}) {
+export default function Service({data}) {
   const [formData,setFormData] = useState ({})
   const [movies,setMovies] = useState(data)
 async function saveMovie(e) {
@@ -98,7 +98,7 @@ const response = await fetch('/api/movies',{
     )
 }
 
-export default Service
+
 
 
 export async function getServerSideProps() {
