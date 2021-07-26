@@ -1,6 +1,7 @@
 import { Navbar } from '../components/Navbar'
 import React,{Fragment,useState} from 'react'
 import {PrismaClient} from '@prisma/client';
+import styles from '../styles/Home.module.css'
 
 const prisma = new PrismaClient();
 
@@ -12,18 +13,27 @@ export async function getServerSideProps() {
     };
   }
 
-
-
 function Login({data}) {
 
     const [movies,setMovies] = useState(data)
     const [number,setNumber] = useState('')
-    const [number1,setNumber1] = useState('')
+    const [number1,setNumber1] = useState(number)
     return (
         <div>
             <Navbar/>
-            {movies.map(item  => {
-              if (item.phone === number) {
+            
+            <div className={styles.main}>
+  	<form className="m-8 flex content-center">
+    	<input className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder="Phone Number"  onChange={(e)=> setNumber(e.target.value)}/>
+		
+	</form>
+  
+    <div  className="content-center">
+    <button className="content-center px-14 py-2 placeholder-yellow-200 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-yellow-500 rounded-md dark:bg-gray-800 hover:bg-yellow-700 dark:hover:bg-gray-700 focus:outline-none focus:bg-yellow-500 dark:focus:bg-gray-700" onClick={(e)=> setNumber1(number)}>Ticket</button>
+    </div>
+    <div>
+    {movies.map(item  => {
+              if (item.phone === number1) {
      return (
       
       <Fragment key={Math.floor(Math.random()*10000)}>
@@ -42,15 +52,10 @@ function Login({data}) {
     }
     }
      )}
-            <div>
-  	<form className="m-4 flex">
-    	<input className="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white" placeholder="Phone Number"  onChange={(e)=> setNumber(e.target.value)}/>
-		<button className="px-8 rounded-r-lg bg-yellow-400  text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-r ">Ticket</button>
-	</form>
-    <div>
-
     </div>
+    
 </div>
+
         </div>
     )
 }

@@ -1,57 +1,24 @@
 import { Navbar } from '../components/Navbar'
 import React,{Fragment,useState} from 'react'
-import {PrismaClient} from '@prisma/client';
-
-const prisma = new PrismaClient();
-
-export async function getServerSideProps() {
-    const users = await prisma.user.findMany();
-
-    return {
-      props: { data: users },
-    };
-  }
+import styles from '../styles/Home.module.css'
 
 
-function Contact({data}) {
-  const [movies,setMovies] = useState(data)
-
+function Contact() {
+ 
     return (
         <div>
-
             <Navbar/>
       {/* map for a user name to login test code seems ok */}
 
-            {movies.map(item  => {
-              if (item.firstname === 'gggg') {
-     return (
-      
-      <Fragment key={Math.floor(Math.random()*10000)}>
-     <li ><br/>
-       <span ><strong>{item.firstname}</strong></span><br/>
-       <span>{item.lastname}</span><br/>
-       <span>{item.phone}</span><br/>
-       <span>{item.suburb}</span><br/>
-       <span>{item.enquirer}</span><br/>
-        <span>{item.details}</span><br/>
-      
-       </li>
-      </Fragment>
-     
-     )
-     }
-     
-    }
-     
-     )}
+            
           {/* map for a user name to login test code seems ok */}
 
-           <div>
+           <div className={styles.container}>
            <section className="text-gray-600 body-font relative">
   <div className="container px-5 py-24 mx-auto">
-    <div className="flex flex-col text-center w-full mb-12">
-      <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>
-      <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Text</p>
+    <div className="flex flex-col text-center w-full mb-2">
+      <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"></h1>
+      <p className="lg:w-2/3 mx-auto leading-relaxed text-base"></p>
     </div>
     <div className="lg:w-1/2 md:w-2/3 mx-auto">
       <div className="flex flex-wrap -m-2">

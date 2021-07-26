@@ -22,7 +22,7 @@ const response = await fetch('/api/movies',{
     return (
         <div>
             <Navbar/>
-            Service Request
+            
             <div>
                 <div className={styles.container}>
             <form onSubmit={saveMovie} className="w-full max-w-lg">
